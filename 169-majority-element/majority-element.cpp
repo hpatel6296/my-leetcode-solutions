@@ -1,3 +1,5 @@
+/*
+-> Solving Using Sorting */
 class Solution {
 public:
     void bubbleSort(vector<int>& nums){
@@ -21,8 +23,14 @@ public:
         bubbleSort(nums);
         int n = nums.size();
         return nums[n/2];
-        /*
-        --> Solve Using Hash Table 
+    }
+};
+
+/*
+--> Solve Using Hash Table 
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
         unordered_map<int,int> count;
         for(int num : nums){
             count[num]++;
@@ -36,6 +44,7 @@ public:
              }
         }
         return maxN;
-        */
     }
 };
+
+*/
