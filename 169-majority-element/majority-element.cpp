@@ -1,5 +1,31 @@
 /*
--> Solving Using Sorting */
+--> Using Nested Loop
+*/
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+       int candidate = 0;
+       int count = 0;
+
+       for(int num : nums){
+          if(count == 0){
+            candidate = num;
+          }
+
+          if(num == candidate){
+            count++;
+          }
+          else{
+            count--;
+          }
+       }
+       return candidate;
+    }
+};
+
+
+/*
+-> Solving Using Sorting 
 class Solution {
 public:
     void bubbleSort(vector<int>& nums){
@@ -25,9 +51,10 @@ public:
         return nums[n/2];
     }
 };
-
+*/
 /*
 --> Solve Using Hash Table 
+
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
