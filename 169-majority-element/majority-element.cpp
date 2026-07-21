@@ -1,5 +1,5 @@
 /*
---> Using Nested Loop
+--> Boyer-Moore Voting Algorithm
 */
 class Solution {
 public:
