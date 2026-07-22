@@ -1,3 +1,22 @@
+//Using Hash Table
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_set<int> count;
+        int a = 0;
+        for(int i=0;i<nums.size();i++){
+            if(count.find(nums[i]) != count.end()){
+               return nums[i];
+            }
+            count.insert(nums[i]);
+        }
+        return 0;
+    }
+};
+
+
+/*
+//--> Using array
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
@@ -14,3 +33,4 @@ public:
         return 0;
     }
 };
+*/
