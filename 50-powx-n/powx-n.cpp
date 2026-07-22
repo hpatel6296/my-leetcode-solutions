@@ -1,13 +1,21 @@
 class Solution {
 public:
     double myPow(double x, int n) {
-        return pow(x,n);
-        /*
+
+        // return pow(x,n);
         if(n == 0){
             return 1;
         }
         if(x == 1){
             return 1;
+        }
+        if(x == -1){
+            if(n%2 == 0){
+                return 1;
+            }
+            else{
+                return -1;
+            }
         }
         if(x == 0){
             return 0;
@@ -20,8 +28,7 @@ public:
         }
         if(n < 0){
             if(n == INT_MIN){
-                pow = 1/x;
-                n = INT_MAX;
+                return 0;
             }
             else{
             n = -n;
@@ -31,6 +38,5 @@ public:
             }
         }
         return pow;
-        */
     }
 };
