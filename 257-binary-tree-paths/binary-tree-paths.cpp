@@ -1,14 +1,52 @@
 /**
- * Definition for a binary tree root.
- * struct Treeroot {
+ * Definition for a binary tree node.
+ * struct TreeNode {
  *     int val;
- *     Treeroot *left;
- *     Treeroot *right;
- *     Treeroot() : val(0), left(nullptr), right(nullptr) {}
- *     Treeroot(int x) : val(x), left(nullptr), right(nullptr) {}
- *     Treeroot(int x, Treeroot *left, Treeroot *right) : val(x), left(left), right(right) {}
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ // Using BackTraking 
+class Solution {
+public:
+    void treeToString(TreeNode* root,vector<int> nums,vector<string>& ans){
+            if(root == NULL){
+                return;
+            }
+            nums.push_back(root->val);
+            if(root->right == NULL && root->left == NULL){
+                 string path = "";
+                for(int i=0;i<nums.size();i++){
+                    path += to_string(nums[i]);
+                    if(i != nums.size()-1){
+                    path += "->";
+                    }
+                }
+                ans.push_back(path);
+            }
+            else{
+            if(root->left != NULL){
+                treeToString(root->left,nums,ans);
+            }
+            if(root->right != NULL){
+                treeToString(root->right,nums,ans);
+            }
+            }
+            nums.pop_back();
+    }
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<int> nums;
+        vector<string> ans;
+        treeToString(root,nums,ans);
+        return ans;
+    }
+};
+
+/*
+ //->using dfs (depth first Serch)
 class Solution {
 public:
     void dfs(TreeNode* root,string path,vector<string>& ans){
@@ -35,3 +73,4 @@ public:
         return ans;
     }
 };
+*/
