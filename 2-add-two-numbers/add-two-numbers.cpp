@@ -14,9 +14,22 @@ public:
         ListNode dummy(0);
         ListNode* temp = &dummy;
         bool carry = false;
-        while(l1 != NULL && l2 != NULL){
-            int x = l1->val + l2->val;
-            if(carry == true){
+        while(l1 != NULL || l2 != NULL){
+            int x;
+            if(l1 != NULL && l2 != NULL){
+               x = l1->val + l2->val;
+               l1 = l1->next;
+               l2 = l2->next;
+            }
+            else if(l2 != NULL && l1 == NULL){
+                x = l2->val;
+                l2 = l2->next;
+            }
+            else if(l1 != NULL && l2 == NULL){
+                x = l1->val;
+                l1 = l1->next;
+            }
+            if(carry){
                 x++;
                 carry = false;
             }
@@ -26,10 +39,8 @@ public:
             }
             temp->next = new ListNode(x);
             temp = temp->next;
-            l1 = l1->next;
-            l2 = l2->next;
         }
-        while(l1 != NULL){
+        /*while(l1 != NULL){
              int x = l1->val;
             if(carry == true){
                 x++;
@@ -56,7 +67,7 @@ public:
             temp->next = new ListNode(x);
             temp = temp->next;
             l2 = l2->next;
-        }
+        }*/
         if(carry){
             temp->next = new ListNode(1);
             temp = temp->next;
